@@ -1013,6 +1013,69 @@ body {
     margin-top: 1em;
   }
 }
+
+/* Overrides mobile: ponlo al FINAL del <style> para que gane prioridad */
+@media (max-width: 768px) {
+  body {
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    overflow-y: auto;          /* permitir scroll */
+    perspective: none;         /* evita glitches 3D en móvil */
+    padding: 12px;
+    padding-bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+  }
+
+  /* Reset duro del mensaje para que no quede fuera de pantalla */
+  .mensaje {
+    position: static !important;
+    left: auto !important;
+    top: auto !important;
+    transform: none !important;
+    width: min(700px, 92vw);
+    margin: 12px auto 8px;
+    padding: 12px;
+    text-align: center;
+    z-index: 3;
+  }
+  .mensaje h1 { font-size: 1.6rem; }
+  .mensaje p  { font-size: 1rem; }
+
+  /* Hacer el jardín responsivo y visible */
+  .flowers {
+    position: relative;
+    width: 100%;
+    min-height: 60svh;         /* usa svh para barras del navegador */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 2vmin;
+    transform: scale(0.7);     /* escala global */
+    transform-origin: bottom center;
+    overflow: visible;
+    margin-bottom: 4vmin;
+  }
+
+  /* Evita posicionamientos absolutos que rompen en pantallas angostas */
+  .flower {
+    position: relative !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    margin: 0 1vmin;
+  }
+
+  /* Opcional: aligerar efectos en móvil */
+  .shooting-stars { display: none; }
+}
+
+/* Ajuste extra para muy pequeño */
+@media (max-width: 480px) {
+  .flowers { transform: scale(0.6); min-height: 55svh; }
+  .mensaje h1 { font-size: 1.4rem; }
+  .mensaje p  { font-size: 0.95rem; }
+}
     </style>
 </head>
 <body class="not-loaded">
