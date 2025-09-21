@@ -1014,6 +1014,68 @@ body {
   }
 }
 
+/* Overrides mobile: poner al FINAL para ganar prioridad */
+@media (max-width: 820px) {
+  html, body { overflow-x: hidden; }
+
+  body {
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    perspective: none;
+    padding: 12px;
+    padding-bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+    gap: 8px;
+  }
+
+  /* Traer el mensaje arriba y centrado */
+  .mensaje {
+    position: static !important;
+    inset: auto !important;
+    transform: none !important;
+    width: min(700px, 92vw);
+    margin: 8px auto 0;
+    text-align: center;
+    z-index: 5;
+  }
+  .mensaje h1 { font-size: 1.6rem; }
+  .mensaje p  { font-size: 1rem; }
+
+  /* Jardín responsivo */
+  .flowers {
+    position: relative !important;
+    width: 100%;
+    min-height: 60svh;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 2vmin;
+    transform: scale(0.65);          /* reduce el ramo completo */
+    transform-origin: bottom center;
+    overflow: visible;
+    margin-bottom: 4vmin;
+  }
+
+  /* Evitar posiciones absolutas que desbordan */
+  .flower {
+    position: relative !important;
+    left: 0 !important;
+    right: auto !important;
+    bottom: 0 !important;
+    margin: 0 1vmin;
+  }
+
+  /* Aligerar efectos en móvil */
+  .shooting-stars { display: none; }
+}
+
+@media (max-width: 430px) {
+  .flowers { transform: scale(0.55); min-height: 56svh; }
+  .mensaje h1 { font-size: 1.45rem; }
+  .mensaje p  { font-size: 0.95rem; }
+}
+
 /* Overrides mobile: ponlo al FINAL del <style> para que gane prioridad */
 @media (max-width: 768px) {
   body {
@@ -1437,3 +1499,4 @@ body {
   </script>
 </body>
 </html>
+``` 
